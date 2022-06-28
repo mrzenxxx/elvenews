@@ -12,7 +12,7 @@ const PostForm = ({create}) => {
             ...post, id: Date.now()
         }
         create(newPost);
-        setPost({title: '', body: ''});
+        setPost({title: 'Admin' , body: ''});
     }
     return (
         <form>
