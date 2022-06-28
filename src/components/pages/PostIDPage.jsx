@@ -5,8 +5,11 @@ import PostService from "../../API/PostService";
 import Loader from "../UI/Loader/Loader";
 import MyButton from "../UI/button/MyButton";
 import MyModal from "../UI/MyModal/MyModal";
+import {capitalize} from "../../utils/capitalize";
+import PostForm from "../PostForm";
 
 const PostIdPage = () => {
+    const [modal, setModal] = useState(false);
     const params = useParams();
     const [post,setPost] = useState({});
     const [comments, setComments] = useState([]);
@@ -19,9 +22,10 @@ const PostIdPage = () => {
         setComments(response.data);
     });
     const navigate = useNavigate();
-    function openCommentForm(){return(
-        <MyModal/>
-    )};
+    const createComment = (newComment) => {
+        setComments([...comments, newComment]);
+        setModal(false);
+    }
 
     useEffect(() => {
         fetchPostById(params.id);
@@ -29,30 +33,40 @@ const PostIdPage = () => {
     },[])
 
 
-
     return (
-        <div>
-            {isLoading
-                ? <Loader/>
-                : <div><h2>{post.id}. {post.title}.</h2> <br/> {post.body}. </div>
-            }
-            <h2 style={{marginTop: 25}}>Комментарии к посту</h2>
-            {isComLoading
-                ? <Loader/>
-                : <div style={{marginTop: 15}}>
-                    {comments.map(comm =>
-                        <div key = {comm.email}>
-                            <h5>{comm.email}</h5>
-                            <div style={{marginBottom: 15}}>{comm.body}</div>
-                        </div>
-                    )}
-                </div>
-            }
-            {/*<MyButton onClick = {openCommentForm}> Оставить комментарий</MyButton>*/}
-            <MyButton onClick = {()=>navigate('/posts')}>Вернуться к списку постов</MyButton>
+            <div>
+                {isLoading
+                    ? <Loader/>
+                    : <div className="post"><h3 className="post__header">{post.id}. {capitalize(post.title)}.</h3> <br/> <p>{capitalize(post.body)}</p>. </div>
+                }
+                <h2 style={{marginTop: 25, marginBottom: 10}}>Комментарии к посту<hr/></h2>
+                {isComLoading
+                    ? <Loader/>
+                    : <div className="post__comments">
+                        {comments.map(comm =>
+                            <div key={comm.email}>
+                                <h4 className="post__header">{comm.email}</h4>
+                                <div style={{marginBottom: 15}}>{capitalize(comm.body)}<hr/></div>
+                            </div>
+                        )}
+                    </div>
+                }
 
-        </div>
-    );
+
+                <MyButton style = {{marginTop: 30, width: "100%"}} onClick={()=> setModal(true)}>
+                Оставить комментарий
+                </MyButton>
+
+                <MyModal visible={modal} setVisible={setModal}>
+                    <PostForm create = {createComment}/>
+                </MyModal>
+                <MyButton style = {{width: "100%"}}onClick={() => navigate('/posts')}>Вернуться к списку постов</MyButton>
+
+            </div>
+        );
+
+
+
 };
 
 export default PostIdPage;

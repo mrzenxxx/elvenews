@@ -10,15 +10,17 @@ const Navbar = () => {
         setIsAuth(false);
         localStorage.removeItem('auth')
     }
-    {
+     if (isAuth){
         return (
-            <div className="navbar">
-                <div className="navbar__links">
-                    <Link to="/posts">Посты</Link>
-                    <Link to="/about">О сайте</Link>
-                </div>
-                <MyButton onClick={logout}>Выйти</MyButton>
+        <div className="navbar">
+            <h1 className="navbar__title">ELVENEWS</h1>
+            <div className="navbar__links">
+                <Link to="/posts">К СПИСКУ ПОСТОВ</Link>
+                    <div style={{width: '15px'}}/>
+                <Link to="/about">О ПРОЕКТЕ</Link>
             </div>
+            <MyButton onClick={logout}>Выйти</MyButton>
+        </div>
         );
     }
 };

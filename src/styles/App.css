@@ -20,10 +20,23 @@
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
 }
 
-post__btns {
+.post__content {
+  padding: 5px;
+}
+
+.post__header {
+  background: #F5FFFA;
+  font-family: "Calibri";
+  font-weight: bold;
+}
+
+.post__btns {
   display: flex;
+  flex-direction: column;
+  margin-right: 0px;
 }
 
 .remove-btn {
@@ -31,23 +44,23 @@ post__btns {
 }
 
 .post-enter {
-  /*transform: translateX(-350px);*/
-  opacity: 0;
+  transform: translateX(-350px);
+  /*opacity: 0;*/
 }
 .post-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-  /*transform: translateX(0px);*/
-  /*transition: all 500ms ease-in;*/
+ /* opacity: 1;
+  transition: opacity 500ms ease-in;*/
+  transform: translateX(0px);
+  transition: all 500ms ease-in;
 }
 .post-exit {
   opacity: 1;
 }
 .post-exit-active {
-  opacity: 0;
-  transition: opacity 500ms ease-in;
-  /*transform: translateX(-350px);
-  transition: all 500ms ease-in;*/
+  /*opacity: 0;
+  transition: opacity 500ms ease-in;*/
+  transform: translateX(-350px);
+  transition: all 500ms ease-in;
 }
 
 .page__wrapper {
@@ -61,6 +74,11 @@ post__btns {
   cursor: pointer;
 }
 
+.page:hover {
+  background: lightseagreen;
+  color: white;
+}
+
 .page__current {
   border: 2px solid orange;
   font-weight: bold;
@@ -72,11 +90,22 @@ post__btns {
   display: flex ;
   align-items: center;
   padding: 0 15px;
-  background: lightseagreen;
+  background: linear-gradient(180deg, lightseagreen, white);
 }
 
 .navbar__links {
+  display: flex;
   margin-left: auto;
   align-items: center;
   padding: 10px;
+}
+
+.navbar__title {
+  align-items: center;
+  width: 500;
+  font-family: "Cambria Math";
+}
+
+.navbar__space {
+  width: 45%;
 }

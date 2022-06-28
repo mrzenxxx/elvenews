@@ -5,4 +5,10 @@
     background: transparent;
     border: 1px solid teal;
     cursor: pointer;
+    width: 96px;
+}
+
+.myBtn:hover {
+    background: lightseagreen;
+    color: white;
 }

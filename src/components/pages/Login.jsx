@@ -12,12 +12,12 @@ const Login = () => {
     }
 
     return (
-        <div>
-           <h1>Страница для логина</h1>
-            <form>
+        <div >
+            <form className="post" style={{flexDirection: 'column'}}>
+                <h3 className="post__header">Авторизация пользователя</h3>
                 <MyInput type =  'text' placeholder='Введите логин'/>
                 <MyInput type = 'password' placeholder='Введите пароль'/>
-                <MyButton onClick = {login} >Войти</MyButton>
+                <MyButton onClick = {login} style={{width: "100%", marginTop:10}} >Войти</MyButton>
             </form>
         </div>
     );

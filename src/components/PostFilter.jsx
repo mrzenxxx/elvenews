@@ -2,13 +2,13 @@ import React from 'react';
 import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 
-const PostFilter = ({filter,setFilter}) => {
+const PostFilter = ({filter,setFilter,child}) => {
     return (
         <div>
             <MyInput
                 value = {filter.query}
                 onChange = { e => setFilter({...filter, query: e.target.value})}
-                placeholder = "Поиск..."
+                placeholder = "Поиск по заголовкам ..."
             />
             <MySelect
                 value = {filter.sort}
@@ -17,9 +17,9 @@ const PostFilter = ({filter,setFilter}) => {
                 options = {[
                     {value: 'title', name: 'По названию'},
                     {value: 'body', name: 'По описанию'},
-                    {value: 'id', name: 'По ID поста'}
                 ]}
             />
+            {child}
         </div>
     );
 };
