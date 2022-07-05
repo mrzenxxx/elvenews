@@ -17,6 +17,7 @@ const PostFilter = ({filter,setFilter,child}) => {
                 options = {[
                     {value: 'title', name: 'По названию'},
                     {value: 'body', name: 'По описанию'},
+                    {value: 'id', name: 'По номеру'}
                 ]}
             />
             {child}

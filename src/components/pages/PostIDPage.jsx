@@ -22,7 +22,10 @@ const PostIdPage = () => {
         setComments(response.data);
     });
     const navigate = useNavigate();
+
     const createComment = (newComment) => {
+        console.log(comments);
+        newComment.email = 'Admin@spb.mail.ru';
         setComments([...comments, newComment]);
         setModal(false);
     }

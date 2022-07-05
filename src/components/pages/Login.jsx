@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     return (
-        <div >
+        <div style={{marginTop: '120px'}}>
             <form className="post" style={{flexDirection: 'column'}}>
                 <h3 className="post__header">Авторизация пользователя</h3>
                 <MyInput onChange = {(e)=>{setId(e.target.value)}} type =  'text' placeholder='Введите логин'/>

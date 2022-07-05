@@ -6,29 +6,24 @@ import {useState} from "react";
 const PostForm = ({create}) => {
     const [post, setPost] = useState({title: '', body: ''});
 
-    const addNewPost = (e) => {
+    const addNewComment = (e) => {
         e.preventDefault();
         const newPost = {
             ...post, id: Date.now()
         }
+        console.log(post,'!!!');
+        console.log(newPost,'!!!');
         create(newPost);
-        setPost({title: 'Admin' , body: ''});
     }
     return (
         <form>
-            {/*<MyInput*/}
-            {/*    value = {post.title}*/}
-            {/*    onChange = {e => setPost({...post, title: e.target.value})}*/}
-            {/*    type="text"*/}
-            {/*    placeholder="Название поста"*/}
-            {/*/>*/}
             <MyInput
                 value = {post.body}
-                onChange = {e => setPost({...post, body: e.target.value})}
+                onChange = {e => setPost({email: 'Admin@spb.mail.ru', body: e.target.value})}
                 type="text"
                 placeholder="Введите комментарий..."
             />
-            <MyButton onClick={addNewPost} style = {{width: '100%'}}>Отправить</MyButton>
+            <MyButton onClick={addNewComment} style = {{width: '100%'}}>Отправить</MyButton>
         </form>
     );
 };

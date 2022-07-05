@@ -13,7 +13,7 @@ import MySelect from "../UI/select/MySelect";
 
 function Posts() {
     const [posts, setPosts] = useState([]);
-    const [filter, setFilter] = useState( {sort:'', query: ''});
+    const [filter, setFilter] = useState( {id: '', sort:'', query: ''});
     const [totalPages, setTotalPages] = useState(0);
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
@@ -54,7 +54,7 @@ function Posts() {
                     <MySelect
                         value={limit}
                         onChange={value => setLimit(value)}
-                        defaultValue= ''
+                        defaultValue= 'Выводить посты по:'
                         options={[
                             {value: 5 , name: '5'},
                             {value: 10, name: '10'},
